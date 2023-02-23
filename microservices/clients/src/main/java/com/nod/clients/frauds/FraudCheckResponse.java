@@ -1,4 +1,4 @@
-package com.nod.fraud;
+package com.nod.clients.frauds;
 
 public record FraudCheckResponse(boolean isFraudster) {
 }

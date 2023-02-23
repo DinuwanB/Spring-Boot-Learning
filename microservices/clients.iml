@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$/clients">
+      <excludeFolder url="file://$MODULE_DIR$/clients/src/main/java/com/nod/clients/fraud" />
+      <excludeFolder url="file://$MODULE_DIR$/clients/src/main/java/com/nod/clients/fraud/notifications" />
+    </content>
+  </component>
+</module>
