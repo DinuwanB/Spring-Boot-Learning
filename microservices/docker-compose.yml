@@ -20,6 +20,13 @@ services:
     ports:
       - "5050:80"
 
+  rabitmq:
+    image: rabbitmq:3.9.11-management-alpine
+    container_name: rabbit_mq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
 #  zipkin:
 #    image: openzipkin/zipkin
 #    container_name: zipkin
