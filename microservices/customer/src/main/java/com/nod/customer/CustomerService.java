@@ -1,6 +1,7 @@
 package com.nod.customer;
 
 
+import com.nod.amq.RabbitMQMessageProducer;
 import com.nod.clients.frauds.FraudCheckResponse;
 import com.nod.clients.frauds.FraudClient;
 import com.nod.clients.notifications.NotificationClient;
@@ -15,6 +16,8 @@ public class CustomerService {
     private final CustomerRepository customerRepository;
     private final FraudClient fraudClient;
     private final NotificationClient notificationClient;
+    private final RabbitMQMessageProducer rabbitMQMessageProducer;
+
     public void registerCustomer(CustomerRegistrationRequest request ) {
         Customer customer = Customer.builder()
                 .firstName(request.firstName())
@@ -31,12 +34,20 @@ public class CustomerService {
             throw new IllegalStateException("fraudster");
         }
         //make it async -> add to queue
-        notificationClient.sendNotification(new NotificationRequest(
+        NotificationRequest notificationRequest = new NotificationRequest(
                 customer.getId(),
                 customer.getEmail(),
                 String.format("Hi %s, Welcome to NOD YT Channel...",
-                        customer.getFirstName())));
+                        customer.getFirstName()));
+//        notificationClient.sendNotification(
+//                notificationRequest
+//        );
 
+            rabbitMQMessageProducer.publish(
+                    notificationRequest,
+                    "internal-notification.routing-key",
+                    "internal.exchange"
+            );
     };
 
 }

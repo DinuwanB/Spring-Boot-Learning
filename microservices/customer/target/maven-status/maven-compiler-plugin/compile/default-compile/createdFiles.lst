@@ -1,0 +1,8 @@
+com\nod\customer\Customer$CustomerBuilder.class
+com\nod\customer\Customer.class
+com\nod\customer\CustomerController.class
+com\nod\customer\CustomerService.class
+com\nod\customer\CustomerRepository.class
+com\nod\customer\CustomerRegistrationRequest.class
+com\nod\customer\CustomerConfig.class
+com\nod\customer\CustomerApplication.class
